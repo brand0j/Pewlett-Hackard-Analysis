@@ -9,7 +9,6 @@ CREATE TABLE titles(
 );
 
 --Joining two tables
-DROP TABLE retirement_titles;
 SELECT em.emp_no,
 	em.first_name,
 	em.last_name,
@@ -21,9 +20,6 @@ FROM employees as em
 LEFT JOIN titles as ti
 ON em.emp_no = ti.emp_no
 WHERE (em.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-ORDER BY emp_no;
-
-SELECT * FROM retirement_titles
 ORDER BY emp_no;
 
 
@@ -49,8 +45,6 @@ ORDER BY ut.count DESC
 
 
 
-
-
 --Mentorship Elegibility
 SELECT DISTINCT ON (emp_no) em.emp_no,
 	em.first_name,
@@ -69,6 +63,8 @@ WHERE (de.to_date = '9999-01-01')
 	AND (em.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY em.emp_no;
 
+
+--SUMMARY ANALYSIS
 --Count of eligible mentors in each title
 SELECT COUNT(me.emp_no) AS "Eligible Mentors", me.title 
 FROM mentorship_eligibility as me
