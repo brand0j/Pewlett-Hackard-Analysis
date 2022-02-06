@@ -69,3 +69,18 @@ WHERE (de.to_date = '9999-01-01')
 	AND (em.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY em.emp_no;
 
+--Count of eligible mentors in each title
+SELECT COUNT(me.emp_no) AS "Eligible Mentors", me.title 
+FROM mentorship_eligibility as me
+GROUP BY me.title
+ORDER BY me.count DESC
+
+--Count of current employees by title
+SELECT COUNT(DISTINCT emp_no),
+	title
+FROM titles
+WHERE (to_date = '9999-01-01')
+GROUP BY title
+ORDER BY count DESC
+
+
